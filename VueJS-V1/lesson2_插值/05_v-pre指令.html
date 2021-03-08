@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+<body>
+    <div id='test'>
+        <h1> {{message}} </h1>
+        <!-- v-pre 用于跳过vue编译 直接显示原来的内容 -->
+        <h2 v-pre> {{message}} </h2>
+    </div>
+
+    <script src='../JS/vue.js'></script>
+    <script>
+        const test = new Vue({
+            el: '#test',
+            data: {
+                message : "Hello World"        
+            }
+        })
+    </script>
+</body>
+</html>

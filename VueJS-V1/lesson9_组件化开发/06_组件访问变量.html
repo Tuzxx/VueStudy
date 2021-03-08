@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Document</title>
+</head>
+<body>
+  <div id='test'>
+    <t1></t1>
+  </div>
+
+  <template id="t1">
+    <div>
+      <h1> 组件的变量 </h1>
+      <h1> 变量:{{x}} </h1>
+    </div>
+  </template>
+
+  <script src='../JS/vue.js'></script>
+  <script>
+    Vue.component("t1", {
+      template: "#t1",
+      // data里必须是函数，不能是对象
+      data() {
+        return {
+          x: "我是变量"
+        }
+      }
+    })
+    const test = new Vue({
+      el: '#test',
+      data: {
+        
+      }
+    })
+  </script>
+</body>
+</html>

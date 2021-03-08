@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div id="counter">
+    <h3>
+        {{number}}
+    </h3>
+    <!-- <button v-on:click="number++">+</button>
+    <button v-on:click="number--">-</button> -->
+    <button v-on:click="add"> + </button>
+    
+    <!-- 语法糖(缩写) v-on:click -> @click -->
+    <button @click="sub"> - </button>
+</div>
+
+    <script src="../JS/vue.js"></script>
+    <script>
+        const counter = new Vue({
+            el:"#counter",
+            data:{
+                number:0
+            },
+            methods:{
+                add: function() {
+                    console.log("Number + 1");
+                    this.number++;
+                },
+                sub: function() {
+                    console.log("Number - 1");
+                    this.number--;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

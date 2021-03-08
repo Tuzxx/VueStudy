@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Document</title>
+</head>
+<body>
+  <div id='test'>
+    <t1></t1>
+    <t2></t2>
+  </div>
+
+  <script src='../JS/vue.js'></script>
+  <script>
+    // 全局组件的语法糖
+    Vue.component("t1", {
+      template: `
+      <div>
+          <h1>全局组件的语法糖</h1>
+      </div>
+      `
+    })
+
+    const test = new Vue({
+      el: '#test',
+      data: {
+        
+      },
+      // 局部组件的语法糖
+      components: {
+        t2 : {
+          template: `
+            <div>
+              <h1>局部组件的语法糖</h1>
+            </div>
+          `
+        }
+      }
+    })
+  </script>
+</body>
+</html>

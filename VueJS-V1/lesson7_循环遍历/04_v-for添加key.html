@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Document</title>
+</head>
+<body>
+  <div id='test'>
+    <!-- v-for 添加key -->
+    <!-- key会让vue更加高效的去更新元素 -->
+    <h1 v-for="i in numbers" :key="i">
+      {{i}}
+    </h1>
+  </div>
+
+  <script src='../JS/vue.js'></script>
+  <script>
+    const test = new Vue({
+      el: '#test',
+      data: {
+        numbers: [1, 2, 3, 4, 5]    
+      }
+    })
+  </script>
+</body>
+</html>

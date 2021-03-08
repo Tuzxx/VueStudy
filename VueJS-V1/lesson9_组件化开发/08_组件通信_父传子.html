@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Document</title>
+</head>
+<body>
+  <div id='test'>
+    <son :stext="text"></son>
+  </div>
+
+  <template id="son">
+    <div>
+      <h3 v-for="item in stext">
+        {{item}}
+      </h3>
+    </div>
+  </template>
+
+  <script src='../JS/vue.js'></script>
+  <script>
+    const son = {
+      template : "#son",
+      data() {
+        return {
+          son: "100"
+        }
+      },
+      // props存入需要传递的变量名
+      // 数组写法
+      // props: ['变量名1', '变量名2'],
+      // props: ["stext"],
+
+      // 对象写法
+      // props: {变量名: 变量类型}
+      props: {
+        // 变量名使用驼峰命名法时，html需要把大写字母改成小写并在前面加-
+        // 例 sText -> s-text
+        stext: {
+          // 支持的类型：String Number Boolean Array Object Date Function Symbol
+          type: [Array, Number, String],  // 若类型为数组或对象且没有传递值，则默认值必须为函数，否则报错 // 支持多个类型
+          default() {
+            return ["123"]
+          } , // 默认值
+          required: true, // 若为true，则父组件必须传入stext的值,不传则报错
+          validator: function(value) {  // 必须匹配指定内容
+            return [[1,2,3], "456", "789"].indexOf(value) !== -1;
+          }
+        }
+      }
+    }
+
+    const test = new Vue({
+      el: '#test',
+      data: {
+        text: "456"
+      },
+      components: {
+        son
+      }
+    })
+  </script>
+</body>
+</html>

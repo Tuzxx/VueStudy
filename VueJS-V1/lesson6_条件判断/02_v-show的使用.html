@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Document</title>
+</head>
+<body>
+  <div id='test'>
+    <!-- v-show不显示时是将标签添加display:none内联属性 -->
+    <!-- 消耗性能较少 -->
+    <!-- 适用于频繁切换的场景 -->
+    <h1 v-show="iShow">
+      {{message}}
+    </h1>
+
+    <!-- v-if不显示是直接将标签元素删除 -->
+    <!-- 消耗性能较大 -->
+    <!-- 适用于仅需要一两次切换的场景 -->
+    <h1 v-if="iShow">
+      {{message}}
+    </h1>
+  </div>
+
+  <script src='../JS/vue.js'></script>
+  <script>
+    const test = new Vue({
+      el: '#test',
+      data: {
+        message: "Hello World",
+        iShow: true
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+    <style>
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='test'>
+        <ul>
+            <li v-for="(item, index) in list" :class="{red : c === index}" @click="cRed(index)"> {{index}}.{{item}}
+            </li>
+        </ul>
+    </div>
+
+    <script src='../JS/vue.js'></script>
+    <script>
+        const test = new Vue({
+            el: '#test',
+            data: {
+                list: ["a", "b", "c", "d"],
+                c: -1
+            },
+            methods: {
+                cRed: function (index) {
+                    if (this.c != index) {
+                        this.c = index;
+                    } else if (this.c === index) {
+                        this.c = -1;
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+<body>
+    <div id='test'>
+        <!-- v-bind 动态绑定属性 -->
+        <!-- 在需要绑定的属性的前面加上v-bind: -->
+        <!-- 可动态改变属性值 -->
+        <img v-bind:src="imgUrl">
+
+        <!-- 语法糖(缩写) v-bind: -> : -->
+        <a :href="url">百度一下</a>
+    </div>
+
+    <script src='../JS/vue.js'></script>
+    <script>
+        const test = new Vue({
+            el: '#test',
+            data: {
+                imgUrl : "https://vignette.wikia.nocookie.net/batman/images/3/39/Batarangs.jpeg/revision/latest?cb=20180907003227",
+
+                url : "https://www.baidu.com"
+            }
+        })
+    </script>
+</body>
+</html>

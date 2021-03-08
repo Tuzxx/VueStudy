@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+<body>
+    <div id='test'>
+        {{sayHelloCom}}
+        {{sayHelloCom}}
+        {{sayHelloCom}}
+        {{sayHelloMeth()}}
+        {{sayHelloMeth()}}
+        {{sayHelloMeth()}}
+    </div>
+
+    <script src='../JS/vue.js'></script>
+    <script>
+        const test = new Vue({
+            el: '#test',
+            data: {
+                message1 : "Hello",
+                message2 : "World"
+            },
+            /*
+                Methods 和 Computed 的区别
+                
+                无论计算内容是否有变，Methods每调用一次都会执行一次
+                
+                Computed调用一次后在浏览器会有缓存，只要计算内容不变，则无数次调用也只有第一次执行了
+                若计算内容变了，则Computed会再执行一次
+
+                对于不经常变化的值，用Computed更节省算力和内存
+            */
+            computed: {
+                sayHelloCom: function(){
+                    return this.message1 + " " + this.message2;
+                }
+            },
+            methods: {
+                sayHelloMeth: function(){
+                    return this.message1 + " " + this.message2;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

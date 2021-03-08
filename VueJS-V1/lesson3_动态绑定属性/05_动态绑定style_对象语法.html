@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+<body>
+    <!-- v-bind 动态绑定style -->
+    <!-- :style={键/属性名: 对/属性值} -->
+    <!-- 若属性值不加引号，则vue会将它当成变量去解析 -->
+    <div id='test' :style="{fontSize: fSize + 'px'}">
+        {{message}}
+    </div>
+
+    <script src='../JS/vue.js'></script>
+    <script>
+        const test = new Vue({
+            el: '#test',
+            data: {
+                message: "Hello World",
+                fSize: 100        
+            }
+        })
+    </script>
+</body>
+</html>

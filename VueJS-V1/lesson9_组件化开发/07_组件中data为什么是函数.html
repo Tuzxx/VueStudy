@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Document</title>
+</head>
+<body>
+  <div id='test'>
+    <!-- 为什么组件中data是函数 -->
+    <!-- 因为组件实例化多个 -->
+    <!-- 数据不能互相影响 -->
+    <!-- 所以data要是函数 -->
+    <!-- 这样每个组件实例就有自己的内存存储数据，不会被其他组件访问或修改 -->
+    <counter></counter>
+    <counter></counter>
+    <counter></counter>
+  </div>
+
+  <template id="counter">
+    <div>
+      <h1>计数:{{num}}</h1>
+      <button @click="increment"> + </button>
+      <button @click="decrement"> - </button>
+    </div>
+  </template>
+
+  <script src='../JS/vue.js'></script>
+  <script>
+    Vue.component("counter", {
+      template: "#counter",
+      data() {
+        return {
+          num: 0
+        }
+      },
+      methods: {
+        increment() {
+          this.num++;
+        },
+        decrement() {
+          this.num--;
+        }
+      }
+    })
+
+    const test = new Vue({
+      el: '#test',
+      data: {
+        
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Document</title>
+</head>
+<body>
+  <div id='test'>
+    <!-- 方法无参数 -->
+    <!-- 调用时不带括号 -->
+    <button @click="btn1Click">1</button>
+    <!-- 调用时带括号 -->
+    <button @click="btn1Click()">1</button>
+    <!-- 结论:正常调用，无区别 -->
+
+    </br>
+
+    <!-- 方法有一个参数 -->
+    <!-- 调用时不带括号，不传参 -->
+    <button @click="btn2Click">2</button>  <!-- 浏览器会自动给方法传入鼠标点击事件 -->
+    <!-- 调用时带括号，不传参 -->
+    <button @click="btn2Click()">2</button> <!-- 方法中的参数会显示为默认的undefined -->
+    <!-- 调用时带括号，传参 -->
+    <button @click="btn2Click('p')">2</button> <!-- 正常调用 -->
+
+    </br>
+
+    <!-- 方法拥有两个参数 -->
+    <!-- 调用时不带括号，不传参 -->
+    <button @click="btn3Click">3</button> <!-- 第一个参数传入鼠标点击事件 第二个显示undefined -->
+    <!-- 调用时带括号，不传参 -->
+    <button @click="btn3Click()">3</button> <!-- 两个参数都显示undefined -->
+    <!-- 调用时带括号，传一个参数 -->
+    <button @click="btn3Click('p1')">3</button> <!-- 未传入的显示undefined -->
+    <!-- 调用时带括号，传两个参数 -->
+    <button @click="btn3Click('p1', 'p2')">3</button> <!-- 正常调用 -->
+
+    </br>
+
+    <!-- 需要鼠标点击事件时 传入参数$event -->
+    <button @click="btn2Click($event)">2</button>
+    <button @click="btn3Click('p1', $event)">3</button>
+  </div>
+
+  <script src='../JS/vue.js'></script>
+  <script>
+    const test = new Vue({
+      el: '#test',
+      data: {
+        
+      },
+      methods: {
+        btn1Click() {
+          console.log("Button 1");
+        },
+        btn2Click(p) {
+          console.log("Button 2 " + p);
+        },
+        btn3Click(p1, p2) {
+          console.log("Button 3 " + p1 + " - " + p2);
+        }
+      }
+    })
+  </script>
+</body>
+</html>

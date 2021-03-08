@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Document</title>
+</head>
+<body>
+  <div id='test'>
+    <cpn></cpn>
+  </div>
+
+  <script src='../JS/vue.js'></script>
+  <script>
+    const cpnC = Vue.extend({
+      template: `
+        <div> 
+          <h1> 1 </h1>
+          <h2> 2 </h2>
+        </div>
+      `
+    })
+
+    const test = new Vue({
+      el: '#test',
+      data: {
+        
+      },
+      // 局部组件 只可用在这个Vue实例
+      components: {
+        cpn: cpnC
+      }
+    })
+  </script>
+</body>
+</html>

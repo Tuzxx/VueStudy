@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+    <style>
+        .c1{
+            text-align: center;
+        }
+        .c2{
+            color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <div id='test'>
+        <!-- 数组语法 -->
+        <!-- 使class可以存储数组 -->
+        <!-- 同时使用多个class -->
+        <!-- 用处不是很大 -->
+        <h1 :class="[class1, class2]">123</h1>
+    </div>
+
+    <script src='../JS/vue.js'></script>
+    <script>
+        const test = new Vue({
+            el: '#test',
+            data: {
+                class1 : "c1",
+                class2 : "c2"
+            }
+        })
+    </script>
+</body>
+</html>

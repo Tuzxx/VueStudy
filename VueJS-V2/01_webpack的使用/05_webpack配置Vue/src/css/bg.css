@@ -1,0 +1,17 @@
+/* webpack不可以直接打包CSS */
+/* 需要下载对应loader */
+/* 并配置相应的文件 */
+/* css-loader只负责加载 */
+/* style-loader负责添加样式 */
+body{
+  /* 6.4kb */
+  background: url('../img/Cat1.jpg'); 
+}
+
+div{
+  width: 300px;
+  height: 300px;
+  margin: auto;
+  /* 8.2kb */
+  background: url('../img/Cat2.jpg');
+}

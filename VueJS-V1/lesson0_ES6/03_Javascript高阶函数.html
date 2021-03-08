@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Document</title>
+</head>
+<body>
+  <div id='test'>
+    {{testFuc()}}
+  </div>
+
+  <script src='../JS/vue.js'></script>
+  <script>
+    const test = new Vue({
+      el: '#test',
+      data: {
+        test: [1, 100, 200, 300, 4, 6, 8, 20]
+      },
+      methods: {
+        testFuc(){
+          // filter 过滤
+          // filter的回调函数有一个要求，必须返回一个boolean值
+          // 若true，则保留这次传入的参数
+          // 若false，则丢弃这次传入的参数
+          let num1 = [];
+          num1 = this.test.filter(function(n){
+            return n > 50;
+          })
+          console.log(num1);
+
+          // map 加工
+          // map返回加工后的参数
+          let num2 = [];
+          num2 = num1.map(function(n){
+            return n*2;
+          })
+          console.log(num2);
+
+          // reduce 迭代
+          // reduce需要传入两个参数(preValue, n)
+          let num3 = [];
+          num3 = num2.reduce(function(pre, n){
+            return pre + n;
+          }, 0)
+          console.log(num3);
+
+          // 合并使用
+          let num4 = this.test.filter(function(n){
+            return n > 50;
+          }).map(function(n){
+            return n * 2;
+          }).reduce(function(pre, n){
+            return pre + n;
+          }, 0)
+          console.log(num4);
+        }
+      }
+    })
+  </script>
+</body>
+</html>

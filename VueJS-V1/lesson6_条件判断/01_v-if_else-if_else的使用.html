@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Document</title>
+</head>
+<body>
+  <div id='test'>
+    <h1 v-if="score>=90">
+      优秀
+    </h1>
+    <h1 v-else-if="score>=60">
+      及格
+    </h1>
+    <h1 v-else>
+      拉跨
+    </h1>
+  </div>
+
+  <script src='../JS/vue.js'></script>
+  <script>
+    const test = new Vue({
+      el: '#test',
+      data: {
+        message: "Hello World",
+        message2: "Hi",
+        score: 60,
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Document</title>
+</head>
+<body>
+  <div id='test'>
+    <cpn></cpn>
+    <cpn>
+      <!-- v-slot:属性名="随意取名1" -->
+      <!-- 随意取名包含了所有自己指定需要的的值 -->
+      <template #loopnames="slotProp">
+        <!-- <span v-for="item in ttt.names">
+          {{item}} - 
+        </span> -->
+        {{slotProp.names}}  
+      </template>
+    </cpn>
+    <cpn></cpn>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <h6>作用域</h6>
+      <!-- 插槽中用v-bind绑定自己需要的值 -->
+      <slot name="loopnames" :names="names">
+        <ul>
+          <li v-for="item in names">{{item}}</li>
+        </ul>
+      </slot>
+    </div>
+  </template>
+
+  <script src='../JS/vue.js'></script>
+  <script>
+    const test = new Vue({
+      el: '#test',
+      data: {
+        
+      },
+      components: {
+        cpn: {
+          template: "#cpn",
+          data() {
+            return {
+              names: ["Tuzx", "Utzx", "Ztux", "Xtuz"],
+            }
+          },
+        }
+      }
+    })
+  </script>
+</body>
+</html>

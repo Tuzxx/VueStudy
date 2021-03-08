@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Document</title>
+</head>
+<body>
+  <!-- 当按钮被点击时，div和button的点击事件都会同时触发 -->
+  <!-- <div id='test' @click="divClicked">
+    <button @click="btnClicked">Btn</button>
+  </div> -->
+
+  <!-- 如果按钮被点击时,不想其他事件触发 -->
+  <!-- .stop -->
+  <div id='test' @click="divClicked">
+    Hello World
+    <button @click.stop="btnClicked">Btn</button>
+
+    <!-- .prevent -->
+    <!-- 点击submit时不会自动提交并跳转页面 -->
+    <!-- 可以通过自己写的方法提交 -->
+    <form action="test.jsp">
+      <input type="submit" value="提交" @click.prevent.stop="submitClick">
+    </form>
+
+    <!-- @keyup -->
+    <!-- 当指定键盘按键抬起 -->
+    <!-- 一直按 不触发 -->
+    KeyUp:<input type="text" @keyup.a="keyUp">
+
+    <br>
+
+    <!-- @keydown -->
+    <!-- 当指定键盘按键按下 -->
+    <!-- 一直按一直触发 -->
+    KeyDown:<input type="text" @keydown.b="keyDown">
+
+    <!-- .once -->
+    <!-- 指定事件只允许触发一次 -->
+    <button @click.once="enterOnce">Once</button>
+  </div>
+
+  <script src='../JS/vue.js'></script>
+  <script>
+    const test = new Vue({
+      el: '#test',
+      data: {
+        
+      },
+      methods: {
+        divClicked() {
+          console.log("Div Clicked");
+        },
+        btnClicked() {
+          console.log("Btn Clicked");
+        },
+        submitClick() {
+          console.log("Submited");
+        },
+        keyUp() {
+          console.log("Key Up");
+        },
+        keyDown() {
+          console.log("Key Down");
+        },
+        enterOnce() {
+          console.log("Hi");
+        }
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Document</title>
+</head>
+<body>
+  <div id='test'>
+    苹果<input type="checkbox" value="苹果" v-model="fruit">
+    葡萄<input type="checkbox" value="葡萄" v-model="fruit">
+    哈密瓜<input type="checkbox" value="哈密瓜" v-model="fruit">
+    西瓜<input type="checkbox" value="西瓜" v-model="fruit">
+    <br>
+    <h2> {{fruit.toString()}} </h2>
+  </div>
+
+  <script src='../JS/vue.js'></script>
+  <script>
+    const test = new Vue({
+      el: '#test',
+      data: {
+        fruit: []
+      }
+    })
+  </script>
+</body>
+</html>

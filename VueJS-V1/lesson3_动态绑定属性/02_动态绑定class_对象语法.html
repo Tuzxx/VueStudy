@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+    <style>
+        .blue{
+            color: blueviolet;
+        }
+
+        .red{
+            color: brown;
+        }
+    </style>
+</head>
+<body>
+    <div id='test'>
+        <!-- 动态绑定class -->
+        <!-- 给class赋予对象(键:对) 可以以此改变class的属性 -->
+        <!-- 还可以通过函数返回对象给class 让标签看起来简约 -->
+        <h1 :class="getClasses()"> {{message}} </h1>
+        <button @click="cBlue">Blue</button>
+        <button @click="cRed">Red</button>
+    </div>
+
+    <script src='../JS/vue.js'></script>
+    <script>
+        const test = new Vue({
+            el: '#test',
+            data: {
+                message : "Hello World",
+                isBlue : false,
+                isRed : false
+            },
+            methods:{
+                cBlue : function () {
+                    this.isRed = false;
+                    this.isBlue = true;
+                },
+                cRed : function () {
+                    this.isRed = true;
+                    this.isBlue = false;
+                },
+                getClasses : function() {
+                    return {blue: this.isBlue, red: this.isRed};
+                }
+            }
+        })
+    </script>
+</body>
+</html>

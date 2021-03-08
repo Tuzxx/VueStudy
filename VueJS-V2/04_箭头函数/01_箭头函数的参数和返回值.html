@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Document</title>
+</head>
+<body>
+  <div id='test'>
+    
+  </div>
+
+  <script src='../JS/vue.js'></script>
+  <script>
+    // 箭头函数
+
+    // 两个参数
+    const sum = (num1, num2) => {
+      return num1 + num2
+    }
+
+    // 一个参数
+    const power = num => {
+      return num * num
+    }
+
+    // 函数只有一行代码
+    // 无返回值
+    const printHw = () => console.log("Hello World")
+
+    // 有返回值
+    const mul = (num1, num2) => num1 * num2
+
+    // 什么时候用箭头函数
+    // 当函数作为参数的时候
+    setTimeout(() => {
+      console.log("Hello World");
+    }, 100);
+
+
+    // 箭头函数的this问题
+    const test = {
+      aaa() {
+        setTimeout(function() {
+
+          setTimeout(function() {
+            console.log(this) // window
+          })
+
+          setTimeout(() => {
+            console.log(this) // window
+          });
+        })
+
+        setTimeout(() => {
+
+          setTimeout(function() {
+            console.log(this) // window
+          })
+
+          setTimeout(() => {
+            console.log(this) // obj
+          });
+        });
+      }
+      // 箭头函数没有属于自己的this
+      // 箭头函数的this会一直向外层找，直到找到有定义this的层数
+    }
+    test.aaa()
+  </script>
+</body>
+</html>

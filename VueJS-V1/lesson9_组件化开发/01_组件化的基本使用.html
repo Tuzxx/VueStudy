@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Document</title>
+</head>
+<body>
+  <div id='app'>
+    <my-test></my-test>
+  </div>
+
+  <script src='../JS/vue.js'></script>
+  <script>
+    const test = Vue.extend({
+      template: `
+        <div>
+          <h1> 123 </h1>
+          <h2> 123 </h2>
+        </div>`
+    })
+    Vue.component('my-test', test)
+
+    const app = new Vue({
+      el: "#app"
+    })
+  </script>
+</body>
+</html>

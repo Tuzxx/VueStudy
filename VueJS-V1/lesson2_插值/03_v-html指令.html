@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+<body>
+    <div id='test'>
+        <h1>
+            {{url}}
+            {{urlA}}
+        </h1>
+        <h2 v-html="url"></h2>
+        <!-- v-html能识别a标签并解析网址 -->
+        <h3 v-html="urlA"></h3>
+    </div>
+
+    <script src='../JS/vue.js'></script>
+    <script>
+        const test = new Vue({
+            el: '#test',
+            data: {
+                url : "www.baidu.com",
+                urlA : '<a href="www.baidu.com">百度一下</a>'
+            }
+        })
+    </script>
+</body>
+</html>

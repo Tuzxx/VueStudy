@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Document</title>
+</head>
+<body>
+  <div id='test'>
+    <!-- 正常循环遍历 -->
+    <ul>
+      <li v-for="i in names">
+        {{i}}
+      </li>
+    </ul>
+
+    <!-- 获取元素下标 -->
+    <ul>
+      <li v-for="(i,index) in names">
+        {{index}}-{{i}}
+      </li>
+    </ul>
+  </div>
+
+  <script src='../JS/vue.js'></script>
+  <script>
+    const test = new Vue({
+      el: '#test',
+      data: {
+        names:[
+          "Tuzx",
+          "Tgd",
+          "Asc",
+          "Ark"
+        ]
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Document</title>
+  <style>
+    #sCart{
+      border: 1px solid #EEEEEE;
+    }
+
+    #tableTitle{
+      background-color: #EEEEEE;
+      color: #000055;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    td{
+      border: 0.5px solid #EEEEEE;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div id='shoppingCart'>
+    <div v-if="products.length != 0">
+      <table id="sCart">
+        <thead>
+          <tr id="tableTitle">
+            <th></td>
+            <th> 书籍名称 </th>
+            <th> 出版日期 </th>
+            <th> 价格 </th>
+            <th> 购买数量 </th>
+            <th> 操作 </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(product, index) in products">
+            <td> {{index + 1}} </td>
+            <td> {{product.书籍名称}} </td>
+            <td> {{product.出版日期}} </td>
+            <td> {{product.价格 | showPrice}}</td>
+            <td> 
+              <button @click="incrementBtn(index)"> + </button>
+              {{product.购买数量}}
+              <button @click="decrementBtn(index)"> - </button>
+            </td>
+            <td>
+              <button @click="delBtnClick(index)">移除</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>总价: {{totalPrice | showPrice}}</h3>
+    </div>
+    <div v-else>
+      <h1>购物车为空</h1>
+    </div>
+  </div>
+
+  <script src='../JS/vue.js'></script>
+  <script>
+    const shoppingCart = new Vue({
+      el: '#shoppingCart',
+      data: {
+        products : [
+          {书籍名称: "《算法导论》", 出版日期: "2006-9" , 价格: 85, 购买数量: 0},
+          {书籍名称: "《UNIX编程艺术》", 出版日期: "2006-2", 价格: 59, 购买数量: 0},
+          {书籍名称: "《编程珠玑》", 出版日期: "2008-10", 价格: 39, 购买数量: 0},
+          {书籍名称: "《代码大全》", 出版日期: "2006-3", 价格: 128, 购买数量: 0}
+        ]
+      },
+      computed: {
+        totalPrice() {
+          sum = 0;
+          for(let product of this.products){
+            sum += product.价格 * product.购买数量;
+          }
+          return sum;
+        }
+      },
+      methods: {
+        delBtnClick(index) {
+          this.products.splice(index, 1);
+        },
+        incrementBtn(index) {
+          this.products[index].购买数量++;
+        },
+        decrementBtn(index) {          
+          if(this.products[index].购买数量 > 0){
+            this.products[index].购买数量--;
+          }
+        }
+      },
+      // 过滤器
+      filters: {
+        showPrice(price) {
+          return "￥" + price.toFixed(2);
+        }
+      }
+    })
+  </script>
+</body>
+</html>

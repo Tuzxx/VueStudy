@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Document</title>
+</head>
+<body>
+  <div id='test'>
+    <t1></t1>
+    <t2></t2>
+  </div>
+
+  <!-- 方法一 -->
+  <!-- 在script编写html代码 类型为"text/x-template" -->
+  <!-- 通过id绑定 -->
+  <script type="text/x-template" id="t1">
+    <div>
+      <h1> 组件的分离写法 </h1>
+      <h1> script写法 </h1>
+    </div>
+  </script>
+
+  <!-- 方法二 -->
+  <!-- template标签 -->
+  <template id="t2">
+    <div>
+      <h1> 组件的分离写法 </h1>
+      <h1> template写法 </h1>
+    </div>
+  </template>
+
+  <script src='../JS/vue.js'></script>
+  <script>
+    // 在这里注册
+    Vue.component("t1", {
+      template: "#t1" 
+    })
+    Vue.component("t2", {
+      template: "#t2"
+    })
+
+    const test = new Vue({
+      el: '#test',
+      data: {
+        
+      }
+    })
+  </script>
+</body>
+</html>

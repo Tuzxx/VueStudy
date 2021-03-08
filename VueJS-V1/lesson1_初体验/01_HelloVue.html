@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="test">
+        {{message}}
+        <ul>
+            <!-- <li>{{text[0]}}</li>
+            <li>{{text[1]}}</li>
+            <li>{{text[2]}}</li> -->
+            <li v-for="item in text">{{item}}</li>
+        </ul>
+    </div>
+
+    <script src="../JS/vue.js"></script>
+    <script>
+        // var 全局变量 let 局部变量 const 常量
+        const test = new Vue({
+            el: '#test',
+            data: {
+                message:"Hello World",
+                text:["Hi", "Hello", "World"]
+            }
+        })
+    </script>
+</body>
+</html>

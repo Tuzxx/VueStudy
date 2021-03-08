@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+<body>
+    <div id='test'>
+        {{totalPrice}}
+    </div>
+
+    <script src='../JS/vue.js'></script>
+    <script>
+        const test = new Vue({
+            el: '#test',
+            data: {
+                product: [
+                    {name: "a", price: 100},
+                    {name: "b", price: 200},
+                    {name: "c", price: 300}
+                ]        
+            },
+            // 计算属性
+            computed: {
+                totalPrice: function(){
+                    let sum = 0;
+                    for(let i = 0; i < this.product.length; i++){
+                        sum += this.product[i].price;
+                    }
+                    return sum;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

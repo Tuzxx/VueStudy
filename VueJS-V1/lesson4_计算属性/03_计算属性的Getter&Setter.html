@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+<body>
+    <div id='test'>
+        {{sayHello}}
+    </div>
+
+    <script src='../JS/vue.js'></script>
+    <script>
+        const test = new Vue({
+            el: '#test',
+            data: {
+                message1: "Hello",
+                message2: "World"
+            },
+            // 计算属性包含Get方法和Set方法
+            // 一般默认只有Get方法，即只读
+            computed: {
+                sayHello:{
+                    set: function(newMessage){
+                        newMessage = newMessage.split(" ");
+                        this.message1 = newMessage[0];
+                        this.message2 = newMessage[1];
+                    },
+                    get: function(){
+                        return this.message1 + " " + this.message2;
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

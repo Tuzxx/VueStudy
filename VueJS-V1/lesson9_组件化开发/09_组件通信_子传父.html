@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Document</title>
+</head>
+<body>
+  <div id='test'>
+    <fruit-button :fruits="fruits" @btn-clicked="btnClick"></fruit-button>
+  </div>
+
+  <template id="fruitButton">
+    <div>
+      <button v-for="item in fruits" @click="btnClicked(item)">
+        {{item.name}}
+      </button>
+    </div>
+  </template>
+
+  <script src='../JS/vue.js'></script>
+  <script>
+    const fruitButton = {
+      template: "#fruitButton",
+      props: {
+        fruits: {
+          type:[Object, Array]
+        }
+      },
+      methods: {
+        btnClicked(item){
+          // 子组件向父组件传递值 第一个参数为绑定标签
+          this.$emit("btn-clicked", item);
+        }
+      },
+    }
+
+    const test = new Vue({
+      el: '#test',
+      data: {
+        fruits: [
+          {
+            id: "001",
+            name: "苹果"
+          },
+          {
+            id: "002",
+            name: "香蕉"
+          },
+          {
+            id: "003",
+            name: "西瓜"
+          }
+        ]
+      },
+      components: {
+        fruitButton
+      },
+      methods: {
+        btnClick(item) {
+          console.log(item);
+        }
+      }
+    })
+  </script>
+</body>
+</html>

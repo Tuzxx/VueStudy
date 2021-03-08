@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Document</title>
+</head>
+<body>
+  <div id='test'>
+    <!-- mutiple 可多选 -->
+    <select name="fruit" v-model="fruit" multiple>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+    </select>
+    <h1> {{fruit}} </h1>
+  </div>
+  <div id="test2">
+    <label v-for="item in originFruit">
+      <input type="checkbox" :value="item" v-model="fruit">{{item}}
+    </label>
+    <h1>
+      {{fruit}}
+    </h1>
+  </div>
+
+  <script src='../JS/vue.js'></script>
+  <script>
+    const test = new Vue({
+      el: '#test',
+      data: {
+        fruit: []
+      }
+    })
+
+    const test2 = new Vue({
+      el: "#test2",
+      data: {
+        originFruit: ['5', '6', '7', '8'],
+        fruit: []
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Document</title>
+</head>
+<body>
+  <div id='test'>
+    <t2></t2>
+  </div>
+
+  <script src='../JS/vue.js'></script>
+  <script>
+    // 子组件
+    const t1 = Vue.extend({
+      template: `
+        <div>
+          <h1>子组件</h1>
+        </div>
+      `
+    })
+
+    // 父组件
+    const t2 = Vue.extend({
+        template:`
+          <div>
+            <h1>父组件</h1>
+            <t1></t1>
+          </div>
+        `,
+        // 注册子组件
+        components: {
+          t1: t1,
+        }
+    })
+
+    const test = new Vue({
+      el: '#test',
+      data: {
+        
+      },
+      components: {
+        t2: t2,
+      }
+    })
+  </script>
+</body>
+</html>

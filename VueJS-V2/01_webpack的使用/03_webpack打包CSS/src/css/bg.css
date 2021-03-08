@@ -1,0 +1,8 @@
+/* webpack不可以直接打包CSS */
+/* 需要下载对应loader */
+/* 并配置相应的文件 */
+/* css-loader只负责加载 */
+/* style-loader负责添加样式 */
+body{
+  background-color: blueviolet;
+}

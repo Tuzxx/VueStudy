@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Document</title>
+</head>
+<body>
+  <div id='test'>
+    <slotest>
+      <!-- 不作任何操作 不能替代有name属性的插槽 -->
+      <button>1</button>
+    </slotest>
+    <slotest>
+      <!-- 添加template标签 v-slot:name属性名 -->
+      <!-- 对应name属性插槽会被替换 -->
+      <template v-slot:btn>
+        <button>2</button>
+      </template>
+    </slotest>
+
+    <slotest>
+      <!-- 语法糖 v-slot: -> # -->
+      <template #btn2>
+        <button>3</button>
+      </template>
+    </slotest>
+  </div>
+
+  <template id="slotest">
+    <div>
+      <h3>1</h3>
+      <h3>2</h3>
+      <h3>3</h3>
+      <!-- 给插槽name属性 -->
+      <slot name="btn">
+        <button>默认值</button>
+      </slot>
+      <slot name="btn2">
+        <button>按钮</button>
+      </slot>
+    </div>
+  </template>
+
+  <script src='../JS/vue.js'></script>
+  <script>
+    const test = new Vue({
+      el: '#test',
+      data: {
+        
+      },
+      components: {
+        slotest: {
+          template: "#slotest",
+        }
+      }
+    })
+  </script>
+</body>
+</html>

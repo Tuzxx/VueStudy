@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Document</title>
+</head>
+<body>
+  <div id='test'>
+    <h1> {{number}} </h1>
+    <button v-on:click="increment"> + </button>
+    <!-- v-on 语法糖 v-on: -> @ -->
+    <button @click="decrement"> - </button>
+  </div>
+
+  <script src='../JS/vue.js'></script>
+  <script>
+    const test = new Vue({
+      el: '#test',
+      data: {
+        number : 0,
+      },
+      methods: {
+        increment() {
+          this.number++;
+        },
+        decrement() {
+          this.number--;
+        }
+      }
+    })
+  </script>
+</body>
+</html>

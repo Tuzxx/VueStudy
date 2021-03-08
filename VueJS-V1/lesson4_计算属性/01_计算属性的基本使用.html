@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+<body>
+    <div id='test'>
+        {{hw}}
+    </div>
+
+    <script src='../JS/vue.js'></script>
+    <script>
+        const test = new Vue({
+            el: '#test',
+            data: {
+                message1 : "Hello",
+                message2 : "World"        
+            },
+            // 计算属性
+            computed: {
+                hw : function(){
+                    return this.message1 + " " + this.message2;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

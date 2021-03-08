@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Document</title>
+</head>
+<body>
+  <div id='test'>
+    <test1></test1>
+    <test1 ref="test0"></test1>
+    <test1></test1>
+    <button @click="btnClick">按钮</button>
+  </div>
+
+  <template id="test1">
+    <div>
+      <h1>我是子组件</h1>
+    </div>
+  </template>
+
+  <script src='../JS/vue.js'></script>
+  <script>
+    const test = new Vue({
+      el: '#test',
+      data: {
+      },
+      methods: {
+        btnClick() {
+          // this.$children
+          // 获取所有子组件对象,以数组方式存储
+          // console.log(this.$children);
+          // this.$children[0].showMessage();
+
+          // $refs
+          // 获取含有指定标签属性(ref="test0")的子组件实例化对象
+          // 只能获取一个
+          console.log(this.$refs.test0);
+          console.log(this.$refs.test0.showMessage());
+        }
+      },
+      components: {
+        test1: {
+          template: "#test1",
+          methods: {
+            showMessage() {
+              console.log("Hello World");
+            }
+          },
+          data() {
+            return {
+              num: 1
+            }
+          },
+        }
+      }
+    })
+  </script>
+</body>
+</html>

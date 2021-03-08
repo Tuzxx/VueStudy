@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Document</title>
+</head>
+<body>
+  <div id='test'>
+    <slotest>
+      <!-- 组件添加标签则会代替slot -->
+      <button>自定义</button>
+      <button>自定义2</button>
+    </slotest>
+    <slotest></slotest>
+    <slotest></slotest>
+  </div>
+
+  <template id="slotest">
+    <div>
+      <h3>1</h3>
+      <h3>2</h3>
+      <h3>3</h3>
+      <!-- slot 插槽 -->
+      <!-- 可以在实例化组件的时候,自定义拓展标签 -->
+      <slot>
+        <!-- 默认值 -->
+        <!-- 若实例化时没有添加标签,则默认添加默认值 -->
+        <button>默认值</button>
+      </slot>
+    </div>
+  </template>
+
+  <script src='../JS/vue.js'></script>
+  <script>
+    const test = new Vue({
+      el: '#test',
+      data: {
+        
+      },
+      components: {
+        slotest: {
+          template: "#slotest",
+        }
+      }
+    })
+  </script>
+</body>
+</html>
